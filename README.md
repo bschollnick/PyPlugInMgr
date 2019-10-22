@@ -30,17 +30,19 @@ PPM allows you to quickly load in a Python module, and be able to (reasonably) e
 For example:
 
 `>>>import PyPluginMgr`
+
 `>>>test = PyPluginMgr.PlugInMgr(plugin_dir=r".\plugins",
                    			  allow_creation=True, plug_ext=".py")`
+                          
 `>>>test.findcandidate_files()`
 
 At this point all the .py files in .\plugins will be loaded and placed in the plugin catalog.  At this point there are several ways to access the plugin contents:
 
 1. Indirectly accessing the plugin name space (via get)
-   `>>>test.get("pyfile1", "__email__")`
-   `'Benjamin@Schollnick.net'`
-   `>>>test.get("pyfile1", "test")("this is an example of calling a function via get")`
-   `test,  this is an example of calling a function via get`
+   `>>>test.get("pyfile1", "__email__")
+   'Benjamin@Schollnick.net'
+   >>>test.get("pyfile1", "test")("this is an example of calling a function via get")
+   test,  this is an example of calling a function via get`
 
 2. Directly access the plugin name space (via get_plugin)
 
