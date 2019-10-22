@@ -1,0 +1,2 @@
+# PyPlugInMgr
+Python Plugin Manager
