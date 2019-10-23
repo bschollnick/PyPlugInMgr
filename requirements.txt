@@ -1,0 +1,9 @@
+# No requirements
+# All modules are from the Batteries Included List...
+#importlib
+#inspect
+#pathlib
+#os
+#os.path
+#sys
+#importlib.util
