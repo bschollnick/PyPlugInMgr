@@ -29,26 +29,29 @@ PPM allows you to quickly load in a Python module, and be able to (reasonably) e
 
 For example:
 
-`>>>import PyPluginMgr`
-`>>>test = PyPluginMgr.PlugInMgr(plugin_dir=r".\plugins",
-                   			  allow_creation=True, plug_ext=".py")`
-`>>>test.findcandidate_files()`
+```python
+    >>>import PyPluginMgr
+    >>>test = PyPluginMgr.PlugInMgr(plugin_dir=r".\plugins", allow_creation=True, plug_ext=".py")
+    >>>test.findcandidate_files()
+```
 
 At this point all the .py files in .\plugins will be loaded and placed in the plugin catalog.  At this point there are several ways to access the plugin contents:
 
 1. Indirectly accessing the plugin name space (via get)
-   `>>>test.get("pyfile1", "__email__")`
-   `'Benjamin@Schollnick.net'`
-   `>>>test.get("pyfile1", "test")("this is an example of calling a function via get")`
-   `test,  this is an example of calling a function via get`
+   ```python
+   >>>test.get("pyfile1", "__email__")
+   'Benjamin@Schollnick.net'
+   >>>test.get("pyfile1", "test")("this is an example of calling a function via get")
+   test,  this is an example of calling a function via get```
 
 2. Directly access the plugin name space (via get_plugin)
-
-   `>>>activeplugin = test.get_plugin("pyfile1")`
-   `>>>activeplugin`
-   `<module 'pyfile1.py' from '....\\PluginMgr\\plugins\\pyfile1.py'>`
-   `>>>activeplugin.__name__`
-   `'pyfile1.py'`
-   `>>>activeplugin.test("hello from Test!")`
-   `test,  hello from Test!`
+   ```python
+   >>>activeplugin = test.get_plugin("pyfile1")
+   >>>activeplugin
+   <module 'pyfile1.py' from '....\\PluginMgr\\plugins\\pyfile1.py'>
+   >>>activeplugin.__name__
+   'pyfile1.py'
+   >>>activeplugin.test("hello from Test!")
+   test,  hello from Test!
+   ```
 
