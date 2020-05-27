@@ -2,22 +2,23 @@ import os
 import re
 import setuptools
 
-NAME             = "PyPluginMgr"
+PIPNAME          = "PyPluginMgr"
+NAME             = "PluginMgr"
 AUTHOR           = "Benjamin Schollnick"
 AUTHOR_EMAIL     = "Benjamin@Schollnick.net"
 DESCRIPTION      = "Python Plugin Manager."
 LICENSE          = "MIT"
 KEYWORDS         = "Plugin"
-URL              = "https://github.com/bschollnick/" + NAME
+URL              = "https://github.com/bschollnick/" + PIPNAME
 README           = ".github/README.md"
 CLASSIFIERS      = [
   "Environment :: Console",
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Intended Audience :: Developers",
   "Topic :: Software Development",
   "License :: OSI Approved :: MIT License",
-  "Programming Language :: Python",
   "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
 ]
 INSTALL_REQUIRES = []
 ENTRY_POINTS     = {}
@@ -36,10 +37,11 @@ VERSION = re.search(
 LONG_DESCRIPTION = read(README)
 
 if __name__ == "__main__":
-  setuptools.setup(name=NAME,
+  setuptools.setup(name=PIPNAME,
         version=VERSION,
         packages=setuptools.find_packages(),
         author=AUTHOR,
+        author_email=AUTHOR_EMAIL,
         description=DESCRIPTION,
         long_description=LONG_DESCRIPTION,
         long_description_content_type="text/markdown",
