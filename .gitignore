@@ -6,3 +6,4 @@
 /build/lib/PluginMgr/*
 /PluginMgr.egg-info/*
 /PyPluginMgr.egg-info/*
+/PluginMgr.egg-info
