@@ -63,7 +63,7 @@ test,  hello from Test!
 
 
 """
-__version__ = "0.9.1"
+__version__ = "1.0.0"
 __author__ = "Benjamin Schollnick"
 __status__ = "Release"
 __credits__ = ["Benjamin Schollnick"]
