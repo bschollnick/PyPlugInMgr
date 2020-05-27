@@ -2,5 +2,7 @@
 *.pyc
 .DS_Store
 /dist
-/PyPluginMgr.egg-info
 /build/*
+/build/lib/PluginMgr/*
+/PluginMgr.egg-info/*
+/PyPluginMgr.egg-info/*
