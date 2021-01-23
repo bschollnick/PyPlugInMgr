@@ -30,8 +30,8 @@ PPM allows you to quickly load in a Python module, and be able to (reasonably) e
 For example:
 
 ```python
-    >>>import PyPluginMgr
-    >>>test = PyPluginMgr.PlugInMgr(plugin_dir=r".\plugins", allow_creation=True, plug_ext=".py")
+    >>>import PluginMgr
+    >>>test = PluginMgr.PlugInMgr(plugin_dir=r".\plugins", allow_creation=True, plug_ext=".py")
     >>>test.findcandidate_files()
 ```
 
