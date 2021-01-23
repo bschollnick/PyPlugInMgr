@@ -62,8 +62,15 @@ test,  hello from Test!
 .. moduleauthor:: Benjamin Schollnick <Benjamin@Schollnick.net>
 
 
+Versions:
+    v1.00 - First Release
+    v1.01 - Change behavior of plugin directory
+    v1.02 - Fix Typo in v1.01, and fix location.  v1.01 would be looking in the site-Lib
+            directory, not the location of the parent script.  (now uses sys.argv[0] 
+            instead of __file__).
+            * added return_plugin_names, return_formatted_plugin_names
 """
-__version__ = "1.0.0"
+__version__ = "1.0.2"
 __author__ = "Benjamin Schollnick"
 __status__ = "Release"
 __credits__ = ["Benjamin Schollnick"]
@@ -79,6 +86,10 @@ import os
 import os.path
 import sys
 from importlib.util import spec_from_file_location, module_from_spec
+
+
+
+
 
 class PlugInMgr:
     """
@@ -120,7 +131,8 @@ class PlugInMgr:
         test.findcandidate_files()
 
         """
-        self.plugin_dir = pathlib.Path.cwd() / plugin_dir
+        #self.plugin_dir = pathlib.Path.cwd() / plugin_dir
+        self.plugin_dir = pathlib.Path(__file__).parent.absolute() / plugin_dir
         self.candidate_files = []
         self.plug_ext = plug_ext
         self.catalog = {}
@@ -249,17 +261,37 @@ class PlugInMgr:
         return default_value
 
 
-#     def has(self, plugin_name, object_name):
-#         """
-#         If the object_name is in the plugin_name's name space,
-#         then return True.
-#
-#         Otherwise, return False in the following conditions
-#
-#             1) plugin was not found (eg not in catalog)
-#             2) object was not found in plugin's name space
-#
-#         """
-#         if plugin_name in self.catalog:
-#             return object_name in self.catalog[plugin_name][1]
-#         return None
+    def has(self, plugin_name, object_name):
+        """
+        If the object_name is in the plugin_name's name space,
+        then return True.
+
+        Otherwise, return False in the following conditions
+
+            1) plugin was not found (eg not in catalog)
+            2) object was not found in plugin's name space
+
+        Args:
+
+            plugin_name (string): The plugin's name (modulename,
+                *not* modulename.py)
+
+            object_name (string): The object you wish to get the value of
+
+
+        Returns:
+            Boolean: If True, the object_name exsists in the plugin_name
+                namespace.  If False, it does not exist.
+
+
+        Examples:
+
+
+        Alternative:
+
+            getattr(themodule, "attribute_name", None)
+
+        """
+        if plugin_name in self.catalog:
+            return object_name in self.catalog[plugin_name][1]
+        return False
